@@ -54,7 +54,7 @@ def api_book():
     if not (email and flight_id and seat):
         return jsonify({"error": "missing fields"}), 400
     
-    # check if seat already booked
+    # check if seat already booked------------
     check = supabase.table("bookings").select("id").eq("flight_id", flight_id).eq("seat_number", seat).execute()
     check_data = getattr(check, "data", None) or (check.get("data") if isinstance(check, dict) else None)
     if check_data and len(check_data) > 0:
