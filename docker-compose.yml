@@ -1,6 +1,7 @@
 services:
   # Flask API server (horizontally scalable)
   api:
+    hostname: api
     image: shibilbasithcp/aetheria-airways:latest
     container_name: flight_api
     ports:
@@ -15,7 +16,9 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - app-network
+      app-network:
+        aliases:
+          - api-service
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/"]
@@ -36,6 +39,7 @@ services:
 
   # Nginx reverse proxy & static file server
   proxy:
+    hostname: proxy
     image: nginx:1.25-alpine
     container_name: flight_proxy
     ports:
@@ -45,9 +49,12 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./nginx/certs:/etc/nginx/certs:ro
     depends_on:
-      - api
+      api:
+        condition: service_healthy
     networks:
-      - app-network
+      app-network:
+        aliases:
+          - web
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
@@ -67,12 +74,15 @@ services:
 
   # Redis for sessions, caching, and locks
   redis:
+    hostname: redis
     image: redis:7-alpine
     container_name: flight_redis
     volumes:
       - redis_data:/data
     networks:
-      - app-network
+      app-network:
+        aliases:
+          - cache
     restart: unless-stopped
     stop_grace_period: 10s
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
