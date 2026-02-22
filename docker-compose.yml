@@ -3,9 +3,7 @@ version: '3.9'
 services:
   # Flask API server (horizontally scalable)
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: shibilbasithcp/aetheria-airways:latest
     container_name: flight_api
     ports:
       - "8000:8000"
