@@ -60,5 +60,5 @@ jobs:
             echo "FLASK_ENV=${{ secrets.FLASK_ENV }}" >> .env
             echo "REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}" >> .env
 
-            docker-compose pull
-            docker-compose up -d
+            docker compose pull
+            docker compose up -d
