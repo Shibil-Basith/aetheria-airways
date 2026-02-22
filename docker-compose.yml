@@ -4,6 +4,8 @@ services:
     hostname: api
     image: shibilbasithcp/aetheria-airways:latest
     container_name: flight_api
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     environment:
