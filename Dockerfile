@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy app and templates
 COPY app.py .
-COPY templates/ templates/
+COPY templates/ /app/templates/
 COPY create_tables.sql .
 COPY seed_flights.py .
 COPY README.md .
