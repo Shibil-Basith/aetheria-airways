@@ -3,171 +3,226 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Passenger Details — Aetheria</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>Booking Details — Aetheria Airways</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body{
-    font-family:'Plus Jakarta Sans',system-ui,Segoe UI;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #0d0f1e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
     transition: background 1s ease;
+    color: #e2e8f0;
   }
 
-  .card{
+  .card {
     width: 100%;
-    max-width: 500px;
-    background: rgba(255,255,255,0.15);
+    max-width: 480px;
+    background: rgba(30, 41, 59, 0.7);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 40px;
-    border-radius: 24px;
+    border: 1px solid rgba(134, 239, 219, 0.15);
+    padding: 2.5rem;
+    border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     animation: cardSlideIn 0.6s ease-out;
   }
+
   @keyframes cardSlideIn { 
     from { opacity: 0; transform: translateY(40px) scale(0.95); } 
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  h2{ 
-    margin: 0 0 12px 0; 
-    color: #fff; 
-    font-size: 1.6rem;
-  }
-
-  .seat-badge{
-    display: inline-block;
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    color: #000;
-    padding: 6px 14px;
-    border-radius: 20px;
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 2rem;
     font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .form-group{
-    margin-top: 16px;
-  }
-
-  label{ 
-    font-size: 0.8rem; 
-    color: #fbbf24; 
-    font-weight: 800;
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  input, select{ 
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.3);
-    background: rgba(255,255,255,0.08);
-    color: #fff;
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    color: #e2e8f0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .seat-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+    color: #0f172a;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(134, 239, 219, 0.25);
+  }
+
+  .form-group {
+    margin-top: 1.2rem;
+  }
+
+  label {
+    font-size: 0.75rem;
+    color: #86efdb;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(134, 239, 219, 0.2);
+    background: rgba(71, 85, 105, 0.4);
+    color: #e2e8f0;
+    font-size: 0.95rem;
     backdrop-filter: blur(10px);
     transition: all 0.3s;
+    font-family: 'Inter', system-ui;
   }
 
-  input::placeholder { color: rgba(255,255,255,0.6); }
+  input::placeholder {
+    color: #64748b;
+  }
 
-  input:focus, select:focus{
+  input:focus, select:focus {
     outline: none;
-    background: rgba(255,255,255,0.12);
-    border-color: #fbbf24;
-    box-shadow: 0 0 20px rgba(251,191,36,0.4);
+    background: rgba(71, 85, 105, 0.6);
+    border-color: #86efdb;
+    box-shadow: 0 0 20px rgba(134, 239, 219, 0.2);
   }
 
-  .row{ 
+  .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: 1.2rem;
   }
 
-  .actions{
+  .actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 2rem;
   }
 
-  a{ 
+  a {
     text-decoration: none;
-    color: rgba(255,255,255,0.7);
+    color: #86efdb;
     transition: 0.3s;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
-  a:hover { color: #fbbf24; }
 
-  .btn{ 
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    color: #000;
-    padding: 12px 24px;
-    border-radius: 10px;
+  a:hover {
+    color: #06b6d4;
+  }
+
+  .btn {
+    background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+    color: #0f172a;
+    padding: 11px 24px;
+    border-radius: 8px;
     border: none;
-    font-weight: 800;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 10px 30px rgba(251,191,36,0.3);
-  }
-  .btn:hover{ 
-    transform: translateY(-3px);
-    box-shadow: 0 15px 50px rgba(251,191,36,0.5);
+    box-shadow: 0 8px 20px rgba(134, 239, 219, 0.25);
+    font-size: 0.9rem;
   }
 
-  /* Success Animation */
-  .success-screen{
+  .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(134, 239, 219, 0.35);
+  }
+
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Success Screen */
+  .success-screen {
     position: fixed;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 3000;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%);
     opacity: 0;
     pointer-events: none;
-    transition: all 0.6s ease;
+    transition: all 0.5s ease;
   }
-  .success-screen.show{
+
+  .success-screen.show {
     opacity: 1;
     pointer-events: auto;
   }
 
-  .success-box{
+  .success-box {
     position: relative;
-    background: rgba(255,255,255,0.15);
+    background: rgba(30, 41, 59, 0.8);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 40px;
-    border-radius: 24px;
+    border: 1px solid rgba(134, 239, 219, 0.2);
+    padding: 3rem;
+    border-radius: 12px;
     text-align: center;
-    color: #fff;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-
-  .success-box h3{
-    font-size: 2rem;
-    margin-bottom: 12px;
+    color: #e2e8f0;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.4);
     animation: scaleIn 0.6s ease-out;
   }
 
-  .checkmark{
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .success-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #86efdb;
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .checkmark {
     width: 80px;
     height: 80px;
-    margin: 0 auto 20px;
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     animation: checkmarkBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 10px 30px rgba(134, 239, 219, 0.3);
   }
 
   @keyframes checkmarkBounce {
@@ -176,75 +231,101 @@
     100% { transform: scale(1); }
   }
 
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .success-text{
-    font-size: 1.1rem;
-    margin: 16px 0;
-    animation: fadeInText 0.6s ease-out 0.3s both;
-  }
-
-  @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(10px); }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .confetti{
+  .success-text {
+    font-size: 1rem;
+    margin: 1rem 0;
+    color: #cbd5e1;
+    animation: fadeIn 0.6s ease-out 0.3s both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .confetti {
     position: absolute;
     pointer-events: none;
   }
 
-  @media(max-width: 600px){
-    .card { padding: 30px 20px; }
-    .row { grid-template-columns: 1fr; }
+  @media (max-width: 600px) {
+    .card {
+      padding: 2rem 1.5rem;
+    }
+
+    .row {
+      grid-template-columns: 1fr;
+    }
+
+    .actions {
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .success-box {
+      padding: 2rem;
+      margin: 20px;
+    }
   }
 </style>
 </head>
 <body>
-  <div style="position: fixed; top: 20px; left: 20px; display: flex; align-items: center; gap: 8px; z-index: 1001;">
-    <div style="font-weight: 800; letter-spacing: 0.5px; color: #fff;">
-      <div style="font-size: 1.3rem; line-height: 1.05;">AETHERIA</div>
-      <div style="font-size: 0.6rem; color: #fbbf24; letter-spacing: 1.2px; margin-top:2px;">AIRWAYS</div>
-    </div>
-    <div style="width: 1.25px; height: 36px; background: #fbbf24; transform: rotate(-15deg); opacity: 0.65; margin-left:6px;"></div>
-  </div>
-
   <div class="card">
-    <h2>Passenger Details</h2>
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <span>AETHERIA</span>
+    </div>
+
+    <h2>Booking Details</h2>
     <div class="seat-badge">Seat {{ seat }}</div>
 
     <div class="form-group">
       <label>Full Name *</label>
-      <input id="name" placeholder="Jane Doe">
+      <input id="name" placeholder="John Doe" type="text">
     </div>
 
     <div class="row">
       <div class="form-group">
-        <label>Sex</label>
-        <select id="sex"><option>Female</option><option>Male</option><option>Other</option></select>
+        <label>Gender</label>
+        <select id="sex">
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Age</label>
-        <input id="age" type="number" min="0" placeholder="34">
+        <input id="age" type="number" min="1" placeholder="25">
       </div>
     </div>
 
     <div class="form-group">
-      <label>Phone</label>
-      <input id="phone" type="tel" placeholder="+1 555 555 5555">
+      <label>Phone Number</label>
+      <input id="phone" type="tel" placeholder="+1 (555) 123-4567">
     </div>
 
     <div class="form-group">
-      <label>Email *</label>
+      <label>Email Address *</label>
       <input id="email" type="email" placeholder="you@example.com">
     </div>
 
     <div class="actions">
       <a href="/">← Cancel</a>
-      <button id="submitBtn" class="btn">Confirm & Book ✈</button>
+      <button id="submitBtn" class="btn">Confirm Booking ✈</button>
     </div>
   </div>
 
@@ -253,8 +334,8 @@
       <div class="checkmark">✓</div>
       <h3>Booking Confirmed!</h3>
       <p class="success-text" id="successText"></p>
-      <p style="margin-top:20px;opacity:0.8">Your booking confirmation has been sent to your email</p>
-      <div style="margin-top:24px"><a href="/" style="color:#fbbf24;font-weight:800">← Return Home</a></div>
+      <p style="margin-top:1.5rem;opacity:0.7;font-size:0.9rem;">A confirmation email has been sent to your inbox</p>
+      <div style="margin-top:2rem"><a href="/" style="color:#86efdb;font-weight:700;font-size:1rem;">← Return Home</a></div>
     </div>
   </div>
 
@@ -264,14 +345,14 @@
   const success = document.getElementById('success');
   const successText = document.getElementById('successText');
 
-  function createConfetti(){
-    for(let i = 0; i < 50; i++){
+  function createConfetti() {
+    for(let i = 0; i < 50; i++) {
       const conf = document.createElement('div');
       conf.className = 'confetti';
       conf.style.left = Math.random() * 100 + '%';
       conf.style.top = '-10px';
       conf.style.width = conf.style.height = Math.random() * 10 + 5 + 'px';
-      conf.style.background = ['#fbbf24', '#f59e0b', '#667eea', '#764ba2'][Math.floor(Math.random() * 4)];
+      conf.style.background = ['#86efdb', '#06b6d4', '#fbbf24', '#f59e0b'][Math.floor(Math.random() * 4)];
       conf.style.borderRadius = '50%';
       conf.style.animation = `fall ${2 + Math.random() * 1}s linear forwards`;
       success.appendChild(conf);
@@ -295,28 +376,36 @@
     const age = document.getElementById('age').value;
     const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
-    if(!name || !email){ alert('Provide name and email'); return; }
+
+    if (!name || !email) {
+      alert('Please fill in Name and Email');
+      return;
+    }
 
     document.getElementById('submitBtn').disabled = true;
-    try{
+
+    try {
       const res = await fetch('/api/book', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           user_email: email,
           flight_id: flightId,
           seat_number: seat,
-          passenger: { name, sex, age, phone }
+          passenger: { name, sex, age: age || null, phone }
         })
       });
+
       const j = await res.json();
-      if(!res.ok){ throw new Error(j.error || 'Booking failed'); }
-      
+
+      if (!res.ok) {
+        throw new Error(j.error || 'Booking failed');
+      }
+
       success.classList.add('show');
       createConfetti();
-      successText.textContent = `${name}, your seat ${seat} is confirmed!`;
-      
-    }catch(err){
+      successText.textContent = `${name}, your flight is booked! Seat ${seat} confirmed.`;
+    } catch (err) {
       alert('Booking failed — ' + err.message);
       document.getElementById('submitBtn').disabled = false;
     }

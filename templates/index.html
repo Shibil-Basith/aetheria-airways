@@ -3,162 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aetheria Airways | Sky-High Luxury</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Aetheria Airways | Premium Flight Booking</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-main: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #F5F5F5 100%); 
-            --surface: rgba(255, 255, 255, 0.7); --text-main: #1e293b;
-            --accent: #c5a059; --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        [data-theme="night"] {
-            --bg-main: linear-gradient(180deg, #020617 0%, #1e1b4b 50%, #0f172a 100%); 
-            --surface: rgba(15, 23, 42, 0.7); --text-main: #f8fafc;
-            --accent: #facc15;
-        }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { 
-            background: var(--bg-main); color: var(--text-main); transition: var(--transition); 
-            overflow-x: hidden; font-family: 'Plus Jakarta Sans', system-ui;
-            min-height: 100vh;
-        }
         
-        .sky-canvas, #skyCanvas { 
-            position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block;
+        body { 
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #0d0f1e 100%);
+            color: #e2e8f0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
         
         nav { 
-            position: fixed; width: 100%; padding: 1.5rem 8%; display: flex; justify-content: space-between; 
-            align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: var(--surface); 
-            border-bottom: 1px solid rgba(255,255,255,0.2); box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(134, 239, 219, 0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        /* Original Simple Logo */
         .logo {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
             cursor: pointer;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent), #d4a574);
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(197,160,89,0.3);
-            transition: all 0.3s;
-        }
-
-        .logo:hover .logo-icon {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(197,160,89,0.4);
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .logo-text-main {
-            font-weight: 900;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, var(--text-main), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-text-sub {
-            font-size: 0.65rem;
-            color: var(--accent);
-            font-weight: 800;
-            letter-spacing: 1.5px;
-        }
-
-        #airplane { 
-            position: fixed; top: 40%; left: -100px; width: 80px; height: 20px; background: var(--accent); 
-            clip-path: polygon(0% 50%, 20% 0%, 90% 45%, 100% 50%, 90% 55%, 20% 100%); z-index: 50; 
-            transition: transform 0.1s linear; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(134, 239, 219, 0.25);
         }
 
         .hero { 
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            text-align: center; position: relative; overflow: hidden; padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 20px 60px;
         }
-        .hero::before {
-            content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(197,160,89,0.08), transparent 70%);
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(134, 239, 219, 0.08), transparent 70%);
             pointer-events: none;
+            z-index: 0;
         }
-        .hero h1 { 
-            font-size: clamp(3rem, 10vw, 7rem); font-weight: 800; margin-bottom: 1rem; 
-            animation: floatIn 1s ease-out;
-            background: linear-gradient(135deg, var(--text-main), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+
+        .hero > * { position: relative; z-index: 1; }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            animation: fadeInUp 0.8s ease-out;
         }
-        .hero p { 
-            font-size: 1.3rem; color: var(--accent); margin-bottom: 2rem; opacity: 0.9;
-            animation: slideUp 1s ease-out 0.2s both;
+
+        .hero > p:nth-of-type(1) {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
         }
-        .hero-subtitle {
-            font-size: 1rem; opacity: 0.7; margin-bottom: 2.5rem;
-            animation: slideUp 1s ease-out 0.3s both;
+
+        .hero > p:nth-of-type(2) {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--accent), #d4a574);
-            color: #000;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+            color: #0f172a;
             border: none;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
-            box-shadow: 0 15px 40px rgba(197,160,89,0.3);
-            transition: all 0.4s;
-            animation: slideUp 1s ease-out 0.4s both;
-        }
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(197,160,89,0.5);
+            box-shadow: 0 10px 30px rgba(134, 239, 219, 0.3);
+            transition: all 0.3s;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
 
-        @keyframes floatIn { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(134, 239, 219, 0.4);
         }
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(20px); } 
+
+        @keyframes fadeInUp { 
+            from { opacity: 0; transform: translateY(30px); } 
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Search Widget */
         .search-widget { 
             display: none;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-            gap: 1.5rem; 
-            width: 90%; 
-            max-width: 1100px; 
-            margin: 0 auto 50px;
-            padding: 2.5rem; 
-            background: var(--surface); 
-            backdrop-filter: blur(20px); 
-            border-radius: 30px; 
-            border: 1px solid rgba(255,255,255,0.3); 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            gap: 1.2rem; 
+            width: 95%; 
+            max-width: 1200px; 
+            margin: 60px auto;
+            padding: 2rem; 
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid rgba(134, 239, 219, 0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             animation: slideDown 0.6s ease-out;
+            position: relative;
+            z-index: 10;
         }
+
         .search-widget.show {
             display: grid;
         }
@@ -169,208 +159,506 @@
         }
 
         .input-group { 
-            display: flex; flex-direction: column;
-        }
-        .input-group label { 
-            display: block; font-size: 0.7rem; font-weight: 800; color: var(--accent); margin-bottom: 5px;
-        }
-        .input-group input, .input-group select { 
-            width: 100%; background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); 
-            padding: 12px; border-radius: 12px; color: var(--text-main); font-weight: 500;
-            transition: all 0.3s;
-        }
-        .input-group input:focus, .input-group select:focus {
-            outline: none; background: rgba(0,0,0,0.08); border-color: var(--accent);
-            box-shadow: 0 0 20px rgba(197,160,89,0.3);
+            display: flex;
+            flex-direction: column;
         }
 
-        .btn-gold { 
-            background: var(--accent); color: #000; border: none; padding: 1rem 2rem; 
-            border-radius: 15px; font-weight: 700; cursor: pointer; transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(197,160,89,0.2); display: inline-block; text-decoration: none;
+        .input-group label { 
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #86efdb;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .btn-gold:hover { 
-            transform: translateY(-3px); box-shadow: 0 15px 40px rgba(197,160,89,0.4);
+
+        .input-group input, .input-group select { 
+            width: 100%;
+            background: rgba(71, 85, 105, 0.5);
+            border: 1px solid rgba(134, 239, 219, 0.2);
+            padding: 10px 12px;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input::placeholder {
+            color: #64748b;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            background: rgba(71, 85, 105, 0.7);
+            border-color: #86efdb;
+            box-shadow: 0 0 20px rgba(134, 239, 219, 0.2);
+        }
+
+        .search-btn { 
+            background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+            color: #0f172a;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(134, 239, 219, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(134, 239, 219, 0.35);
         }
 
         /* Loading Overlay */
         #loading { 
-            display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.8); 
-            backdrop-filter: blur(30px); z-index: 2000; align-items: center; justify-content: center; 
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
             flex-direction: column;
         }
+
         .spinner { 
-            width: 60px; height: 60px; border: 4px solid rgba(197,160,89,0.3); border-top-color: var(--accent); 
-            border-radius: 50%; animation: spin 1.2s linear infinite;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(134, 239, 219, 0.2);
+            border-top-color: #86efdb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
+
         @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Results Section */
         #results { 
-            display: none; padding: 60px 10%; background: linear-gradient(135deg, rgba(197,160,89,0.05), rgba(197,160,89,0.02));
-            animation: fadeIn 0.8s ease-out;
+            display: none;
+            padding: 60px 5%;
+            background: linear-gradient(135deg, rgba(134, 239, 219, 0.05), transparent);
+            animation: fadeIn 0.6s ease-out;
         }
+
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         #results h2 { 
-            font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-main);
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            color: #e2e8f0;
+            font-weight: 800;
         }
 
         .flight-card {
-            display: flex; justify-content: space-between; align-items: center; padding: 20px; 
-            border-radius: 16px; background: var(--surface); backdrop-filter: blur(15px); 
-            border: 1px solid rgba(255,255,255,0.3); margin-bottom: 16px; 
-            transition: all 0.4s; cursor: pointer;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 239, 219, 0.1);
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
         .flight-card:hover {
-            transform: translateY(-8px); box-shadow: 0 20px 50px rgba(197,160,89,0.2);
-            background: rgba(255,255,255,0.85);
+            transform: translateY(-4px);
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(134, 239, 219, 0.3);
+            box-shadow: 0 12px 30px rgba(134, 239, 219, 0.15);
         }
-        .flight-info { flex: 1; }
-        .flight-info > div:first-child { font-weight: 800; font-size: 1.1rem; }
-        .flight-info > div:last-child { color: var(--accent); font-size: 0.9rem; margin-top: 6px; }
+
+        .flight-info {
+            flex: 1;
+        }
+
+        .flight-info > div:first-child {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flight-info > div:last-child {
+            color: #86efdb;
+            font-size: 0.9rem;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #86efdb 0%, #06b6d4 100%);
+            color: #0f172a;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(134, 239, 219, 0.25);
+            margin-left: 1rem;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(134, 239, 219, 0.35);
+        }
 
         /* Stats Section */
         .stats {
-            padding: 60px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
-            background: linear-gradient(135deg, rgba(197,160,89,0.08), rgba(197,160,89,0.02));
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            background: linear-gradient(135deg, rgba(134, 239, 219, 0.03), transparent);
         }
+
         .stat-card {
-            background: var(--surface); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3);
-            padding: 2.5rem; border-radius: 20px; text-align: center; transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 239, 219, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
+
         .stat-card:hover {
-            transform: translateY(-10px); box-shadow: 0 20px 50px rgba(197,160,89,0.2);
+            transform: translateY(-6px);
+            border-color: rgba(134, 239, 219, 0.3);
+            box-shadow: 0 12px 30px rgba(134, 239, 219, 0.15);
         }
-        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; }
-        .stat-label { opacity: 0.8; }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #86efdb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
 
         /* Features Section */
-        .features { 
-            padding: 80px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        .features {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        .feature-card {
-            background: var(--surface); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3);
-            padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px) rotateX(5deg); box-shadow: 0 20px 50px rgba(197,160,89,0.2);
-        }
-        .feature-icon { font-size: 3rem; margin-bottom: 1rem; animation: iconFloat 3s ease-in-out infinite; }
-        .feature-card h3 { color: var(--accent); margin-bottom: 0.5rem; }
-        .feature-card p { opacity: 0.8; font-size: 0.95rem; }
 
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 239, 219, 0.1);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(134, 239, 219, 0.3);
+            box-shadow: 0 12px 40px rgba(134, 239, 219, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #e2e8f0;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
         }
 
         /* Testimonials */
         .testimonials {
-            padding: 80px 10%; background: linear-gradient(135deg, rgba(197,160,89,0.05), rgba(197,160,89,0.02));
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(134, 239, 219, 0.03), transparent);
         }
-        .testimonials h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+
+        .testimonials h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #e2e8f0;
+            font-weight: 800;
+        }
+
         .testimonial-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
         .testimonial-card {
-            background: var(--surface); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3);
-            padding: 2rem; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 239, 219, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s;
         }
-        .testimonial-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(197,160,89,0.2); }
-        .stars { color: var(--accent); margin-bottom: 1rem; font-size: 1.2rem; }
-        .testimonial-text { opacity: 0.85; margin-bottom: 1rem; font-style: italic; }
-        .testimonial-author { font-weight: 800; }
-        .testimonial-role { opacity: 0.6; font-size: 0.9rem; }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(134, 239, 219, 0.3);
+            box-shadow: 0 12px 30px rgba(134, 239, 219, 0.15);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-role {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
 
         /* FAQ Section */
         .faq {
-            padding: 80px 10%; max-width: 900px; margin: 0 auto;
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .faq h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+
+        .faq h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #e2e8f0;
+            font-weight: 800;
+        }
+
         .faq-item {
-            background: var(--surface); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3);
-            padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; cursor: pointer;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(134, 239, 219, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
         }
-        .faq-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .faq-question { font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-        .faq-answer { 
-            display: none; margin-top: 1rem; opacity: 0.8; animation: slideDown 0.3s ease-out;
+
+        .faq-item:hover {
+            border-color: rgba(134, 239, 219, 0.3);
+            box-shadow: 0 8px 20px rgba(134, 239, 219, 0.1);
         }
-        .faq-item.active .faq-answer { display: block; }
-        .faq-toggle { color: var(--accent); font-weight: 800; }
+
+        .faq-item.active {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(134, 239, 219, 0.3);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #e2e8f0;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 1rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle {
+            color: #86efdb;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
 
         /* Footer */
-        footer { 
-            padding: 3rem 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);
-            background: var(--surface); backdrop-filter: blur(10px);
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(134, 239, 219, 0.1);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
         }
-        footer p { opacity: 0.7; }
-        .footer-links { margin-top: 1.5rem; }
-        .footer-links a { margin: 0 1rem; color: var(--accent); text-decoration: none; }
-        .footer-links a:hover { text-decoration: underline; }
 
-        /* Theme toggle: icon-only, no background, subtle 3D text-shadow */
-        .theme-btn {
-            background: transparent; border: none; padding: 6px; width:44px; height:44px; display:flex; align-items:center; justify-content:center; cursor:pointer; perspective:600px; -webkit-tap-highlight-color: transparent;
+        footer p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
         }
-        .theme-btn:focus { outline: none; }
-        .theme-icon { display:inline-block; font-size:1.35rem; line-height:1; transform-style:preserve-3d; transition: transform 220ms ease, text-shadow 220ms ease; 
-            /* layered text-shadow to simulate a 3D embossed icon */
-            text-shadow: 0 1px 0 rgba(0,0,0,0.35), 0 6px 18px rgba(0,0,0,0.45), 0 0 0 rgba(255,255,255,0.02);
-        }
-        .theme-btn:hover .theme-icon { transform: translateY(-6px) rotateX(14deg) scale(1.06); text-shadow: 0 2px 0 rgba(0,0,0,0.38), 0 14px 36px rgba(0,0,0,0.55); }
 
-        @media(max-width: 768px) {
-            nav { padding: 1rem 4%; }
-            .search-widget { width: 95%; }
-            .faq { padding: 60px 20px; }
-            .features, .testimonials { padding: 60px 20px; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #86efdb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #06b6d4;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 4%;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 100px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero > p:nth-of-type(1) {
+                font-size: 1.1rem;
+            }
+
+            .hero > p:nth-of-type(2) {
+                font-size: 0.85rem;
+            }
+
+            .search-widget {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .search-btn {
+                width: 100%;
+            }
+
+            .flight-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-book {
+                margin-left: 0;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
+            .faq {
+                padding: 60px 20px;
+            }
+
+            .features, .testimonials {
+                padding: 60px 20px;
+            }
+
+            .stats {
+                padding: 60px 20px;
+            }
         }
     </style>
 </head>
-<body data-theme="night">
-    <canvas id="skyCanvas" class="sky-canvas"></canvas>
-    <div id="airplane"></div>
-    <div id="loading"><div class="spinner"></div><p style="margin-top:20px; font-weight:700;">CALCULATING TRAJECTORY...</p></div>
+<body>
+    <div id="loading">
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; font-weight: 600; font-size: 0.9rem;">Searching flights...</p>
+    </div>
 
     <nav>
-        <div style="display: flex; align-items: center; gap: 4px;">
-            <div style="font-weight: 800; letter-spacing: 0.5px;">
-                <div style="font-size: 1.4rem; line-height: 1.1;">AETHERIA</div>
-                <div style="font-size: 0.65rem; color: var(--accent); letter-spacing: 1.2px; margin-left: 60px;">AIRWAYS</div>
-            </div>
-            <div style="width: 1.5px; height: 40px; background: var(--accent); transform: rotate(-15deg); opacity: 0.6;"></div>
-            </div>
+        <div class="logo">
+            <div class="logo-icon">✈</div>
+            <span>AETHERIA</span>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>The Art of<br><span style="color:var(--accent)">Flight.</span></h1>
-        <p>Experience luxury travel reimagined for the modern explorer</p>
-        <p class="hero-subtitle">Book flights to 500+ destinations with premium amenities and world-class service</p>
-        <button class="cta-button" onclick="showSearchWidget()">✈ Look For Flights</button>
+        <h1>Discover Your<br><span style="color: #86efdb;">Next Journey</span></h1>
+        <p>Book flights to 500+ destinations globally</p>
+        <p>Premium comfort, competitive pricing, 24/7 support</p>
+        <button class="cta-button" onclick="showSearchWidget()">🔍 Search Flights</button>
     </section>
 
-    <!-- Search Widget (Hidden by default) -->
+    <!-- Search Widget -->
     <div class="search-widget" id="searchWidget">
-        <div class="input-group"><label>Origin</label><input type="text" id="origin" placeholder="London"></div>
-        <div class="input-group"><label>Destination</label><input type="text" id="destination" placeholder="Tokyo"></div>
-        <div class="input-group"><label>Date</label><input type="date"></div>
-        <div class="input-group"><label>Class</label><select><option>First Class</option><option>Business</option><option>Economy Plus</option></select></div>
-        <button class="btn-gold" onclick="searchFlights()">Search Flights</button>
+        <div class="input-group">
+            <label>From</label>
+            <input type="text" id="origin" placeholder="e.g., London">
+        </div>
+        <div class="input-group">
+            <label>To</label>
+            <input type="text" id="destination" placeholder="e.g., Tokyo">
+        </div>
+        <div class="input-group">
+            <label>Date</label>
+            <input type="date" id="searchDate">
+        </div>
+        <div class="input-group">
+            <label>Class</label>
+            <select>
+                <option>Economy</option>
+                <option>Business</option>
+                <option>First Class</option>
+            </select>
+        </div>
+        <button class="search-btn" onclick="searchFlights()">Search</button>
     </div>
 
     <!-- Results Section -->
     <section id="results">
-        <h2>Available Trajectories</h2>
-        <div id="flights-list" style="margin-top: 20px;"></div>
+        <h2>Available Flights</h2>
+        <div id="flights-list"></div>
     </section>
 
     <!-- Stats Section -->
@@ -396,58 +684,58 @@
     <!-- Features Section -->
     <section class="features">
         <div class="feature-card">
-            <div class="feature-icon">✈️</div>
+            <div class="feature-icon">🌍</div>
             <h3>Global Routes</h3>
-            <p>Connect to 500+ destinations worldwide with premium carriers and exclusive partnerships</p>
+            <p>Connect to 500+ destinations worldwide with trusted carriers</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">⭐</div>
             <h3>Luxury Comfort</h3>
-            <p>First-class amenities including gourmet dining, spa services, and premium lounges</p>
+            <p>First-class amenities and premium seating for your journey</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
+            <div class="feature-icon">🔒</div>
             <h3>Secure Booking</h3>
-            <p>End-to-end encryption, instant confirmation, and protected payment methods</p>
+            <p>End-to-end encryption and instant confirmation</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🎁</div>
             <h3>Exclusive Rewards</h3>
-            <p>Earn points on every booking and unlock VIP perks, upgrades, and special discounts</p>
+            <p>Earn points and unlock VIP perks on every booking</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🌍</div>
+            <div class="feature-icon">💬</div>
             <h3>24/7 Support</h3>
-            <p>Dedicated concierge service available in 50+ languages round the clock</p>
+            <p>Dedicated assistance in 50+ languages anytime, anywhere</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">💎</div>
             <h3>Premium Lounge</h3>
-            <p>Access exclusive lounges in major hubs worldwide with complimentary amenities</p>
+            <p>Access exclusive airport lounges worldwide</p>
         </div>
     </section>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
-        <h2>What Our Travelers Say</h2>
+        <h2>Trusted by Travelers Worldwide</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Aetheria made my international trip unforgettable. The booking process was seamless and the service exceptional!"</p>
+                <p class="testimonial-text">"The best flight booking experience! Seamless process and outstanding customer service."</p>
                 <div class="testimonial-author">Sarah Johnson</div>
-                <div class="testimonial-role">Business Executive, New York</div>
+                <div class="testimonial-role">Business Traveler</div>
             </div>
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Best flight booking experience I've had. The seat selection was intuitive and the customer support was outstanding."</p>
+                <p class="testimonial-text">"Great selection of flights and incredible deals. I'll definitely book again!"</p>
                 <div class="testimonial-author">Marco Rossi</div>
-                <div class="testimonial-role">Frequent Traveler, Milan</div>
+                <div class="testimonial-role">Leisure Traveler</div>
             </div>
             <div class="testimonial-card">
                 <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Luxury travel has never been this accessible. Aetheria offers premium flights at competitive prices. Highly recommended!"</p>
+                <p class="testimonial-text">"Premium travel made affordable. Absolutely recommended for everyone!"</p>
                 <div class="testimonial-author">Priya Sharma</div>
-                <div class="testimonial-role">Travel Blogger, Mumbai</div>
+                <div class="testimonial-role">Travel Blogger</div>
             </div>
         </div>
     </section>
@@ -462,7 +750,7 @@
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                You can cancel or modify your booking up to 24 hours before departure through your account dashboard. Cancellations are subject to airline policies and may incur fees.
+                You can cancel or modify your booking up to 24 hours before departure through your account dashboard. Cancellations follow airline policies and may include fees.
             </div>
         </div>
 
@@ -472,27 +760,27 @@
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                We accept all major credit cards (Visa, Mastercard, American Express), digital wallets (Apple Pay, Google Pay), and bank transfers. All payments are processed securely.
+                We accept all major credit cards, digital wallets (Apple Pay, Google Pay), and bank transfers. All payments are processed with industry-standard encryption.
             </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                How far in advance should I book my flight?
+                When should I book my flight?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                For best prices, we recommend booking 2-3 months in advance. However, last-minute deals are available if you're flexible with your schedule.
+                For the best prices, book 2-3 months in advance. Last-minute deals are also available if you're flexible with your travel dates.
             </div>
         </div>
 
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                Do you offer travel insurance?
+                Does Aetheria offer travel insurance?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                Yes! We offer comprehensive travel insurance during checkout that covers flight delays, cancellations, and medical emergencies.
+                Yes! Comprehensive travel insurance is available during checkout covering flight delays, cancellations, and medical emergencies.
             </div>
         </div>
 
@@ -502,25 +790,23 @@
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                Baggage allowance varies by airline and class. First Class typically includes 2 checked bags + carry-on. Details are shown during booking.
+                Baggage allowance varies by airline and class. First Class includes 2 checked bags + carry-on. Details are provided during checkout.
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Aetheria Airways. Redefining luxury travel. All rights reserved.</p>
+        <p>&copy; 2026 Aetheria Airways. Redefining luxury travel.</p>
         <div class="footer-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms & Conditions</a>
-            <a href="#contact">Contact Us</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+            <a href="#contact">Contact</a>
             <a href="#careers">Careers</a>
         </div>
     </footer>
 
     <script>
-        /* theme toggle removed — site is always night mode */
-
         function showSearchWidget() {
             const widget = document.getElementById('searchWidget');
             widget.classList.add('show');
@@ -532,7 +818,12 @@
         async function searchFlights() {
             const origin = document.getElementById('origin').value.trim();
             const destination = document.getElementById('destination').value.trim();
-            const date = document.querySelector('.search-widget input[type="date"]').value;
+            const date = document.getElementById('searchDate').value;
+
+            if (!origin || !destination) {
+                alert('Please fill in origin and destination');
+                return;
+            }
 
             document.getElementById('loading').style.display = 'flex';
 
@@ -540,23 +831,25 @@
                 const res = await fetch('/api/flights', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ origin, destination, date })
+                    body: JSON.stringify({ origin, destination, date: date || null })
                 });
+
                 if (!res.ok) {
-                    const txt = await res.text();
-                    throw new Error(txt || res.statusText);
+                    throw new Error('Search failed');
                 }
+
                 const payload = await res.json();
                 const flights = payload.data || [];
                 renderFlights(flights);
+
                 const results = document.getElementById('results');
                 results.style.display = 'block';
-                results.style.opacity = 0;
-                setTimeout(() => { results.style.opacity = 1; }, 50);
-                window.scrollTo({ top: results.offsetTop - 100, behavior: 'smooth' });
+                setTimeout(() => {
+                    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             } catch (err) {
                 console.error(err);
-                alert('Search failed — check console and server logs.');
+                alert('Search failed. Please try again.');
             } finally {
                 document.getElementById('loading').style.display = 'none';
             }
@@ -564,17 +857,18 @@
 
         function renderFlights(flights) {
             const container = document.getElementById('flights-list');
-            if (!flights.length) {
-                container.innerHTML = '<p>No flights found.</p>';
+            if (!flights || flights.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #94a3b8;">No flights found. Try different search criteria.</p>';
                 return;
             }
+
             container.innerHTML = flights.map(f => `
                 <div class="flight-card">
                     <div class="flight-info">
-                        <div>${f.flight_no} — ${f.origin} → ${f.destination}</div>
+                        <div>${f.flight_no} • ${f.origin} → ${f.destination}</div>
                         <div>${f.departure_date} • $${Number(f.price).toFixed(2)}</div>
                     </div>
-                    <a class="btn-gold" href="/seat/${f.id}">Select Seat</a>
+                    <a href="/seat/${f.id}" class="btn-book">Book Now</a>
                 </div>
             `).join('');
         }
@@ -584,40 +878,6 @@
             const toggle = element.querySelector('.faq-toggle');
             toggle.textContent = element.classList.contains('active') ? '−' : '+';
         }
-
-        window.addEventListener('scroll', () => {
-            const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-            const plane = document.getElementById('airplane');
-            plane.style.transform = `translate(${scrollPercent * (window.innerWidth + 200)}px, ${Math.sin(scrollPercent * 10) * 50}px) rotate(${Math.cos(scrollPercent * 10) * 20}deg) scaleX(${scrollPercent > 0.5 ? -1 : 1})`;
-        });
-
-        /* Sky canvas animation: sun during day, moon + stars at night */
-        (function(){
-            const canvas = document.getElementById('skyCanvas');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            let w=0,h=0; let stars=[]; let starCount=120; let raf;
-            function resize(){ w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; initStars(); }
-            function initStars(){ stars = []; for(let i=0;i<starCount;i++){ stars.push({ x: Math.random()*w, y: Math.random()*h*0.65, r: Math.random()*1.6+0.4, a: Math.random(), da: (Math.random()*0.02+0.004) }); } }
-            function drawStar(s){ ctx.beginPath(); ctx.fillStyle = `rgba(255,255,255,${s.a})`; ctx.arc(s.x,s.y,s.r,0,Math.PI*2); ctx.fill(); }
-                        // moon removed: render stars only
-            function drawSun(x,y,r){ const g = ctx.createRadialGradient(x,y,2,x,y,r*2); g.addColorStop(0,'rgba(255,255,210,1)'); g.addColorStop(0.35,'rgba(255,225,120,0.75)'); g.addColorStop(1,'rgba(255,170,60,0.03)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill(); }
-            function animate(){ ctx.clearRect(0,0,w,h);
-                const t = Date.now()/2000;
-                // always night: draw stars (twinkling) and a fixed moon on the left-middle
-                for(const s of stars){ s.a += (Math.random()*0.02-0.01)*s.da; if(s.a<0.15) s.a=0.15; if(s.a>1) s.a=1; drawStar(s); }
-                // moon removed — only stars are drawn
-                raf = requestAnimationFrame(animate);
-            }
-            window.addEventListener('resize', resize);
-            // respond to theme changes
-            // no theme toggling — always night; still re-init on resize
-            resize(); animate();
-        })();
-
-        window.onload = () => {
-            document.body.setAttribute('data-theme', 'night');
-        };
     </script>
 </body>
 </html>
