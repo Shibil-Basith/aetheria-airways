@@ -36,7 +36,7 @@ def api_flights():
     query = query.order("departure_date", desc=False).limit(200)
 
     res = query.execute()
-    # Normalize response checking
+    # Normalize response checking---------------
     data = getattr(res, "data", None) or (res.get("data") if isinstance(res, dict) else None)
     err = getattr(res, "error", None) or (res.get("error") if isinstance(res, dict) else None)
     if err:
