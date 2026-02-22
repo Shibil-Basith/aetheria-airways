@@ -1,0 +1,14 @@
+Flask>=2.0
+gunicorn
+flask-cors
+python-dotenv
+supabase
+httpx
+
+# Optional / commonly useful when running locally or adding features
+# Postgres client for local Postgres (not required if using Supabase)
+psycopg2-binary
+# Redis client (for caching or session store)
+redis
+# Celery (if you add background workers)
+celery
